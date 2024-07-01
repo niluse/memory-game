@@ -1,0 +1,35 @@
+.card {
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  border: 2px solid #fff;
+  border-radius: 6px;
+}
+/** front of the card-picture */
+.card .front {
+  transform: rotateY(
+    90deg
+  ); /*? if we rotate smt 90 degres on the y axis it will be hidden */
+  transition: all ease-in 0.2s;
+  position: absolute; /*? we are hiding the picture behind the .card part with position: relative; */
+}
+.flipped .front {
+  transform: rotateY(
+    0deg
+  ); /*? if we get the rotation to 0 degres it will be seen again */
+  transition-delay: 0.2s;
+}
+/** back of the card-cover */
+.card .back {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+.flipped .back {
+  transform: rotateY(
+    90deg
+  ); /*? if we get the rotation to 0 degres it will be seen again */
+  transition-delay: 0s;
+}
