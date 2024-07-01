@@ -25,6 +25,8 @@ function App() {
       .sort(() => Math.random() - 0.5) //! random dan negatif gelirse karsilastirdigi iki kartin yerini degistirmeyecek eger pozitifse yer degistirecek bu sekilde karismis kar array i else edecegiz
       .map((card) => ({ ...card, id: Math.random() }));
 
+    setchoiceOne(null);
+    setchoiceTwo(null);
     setCards(shuffledCards);
     setTurns(0);
   };
@@ -36,8 +38,8 @@ function App() {
 
   //* compare 2 selected cards
   useEffect(() => {
-    setDisabled(true);
     if (choiceOne && choiceTwo) {
+      setDisabled(true);
       if (choiceOne.src === choiceTwo.src) {
         setCards((prevCards) => {
           return prevCards.map((card) => {
@@ -65,6 +67,11 @@ function App() {
     setDisabled(false);
   };
 
+  //* start a new game automatically //
+  useEffect(() => {
+    shuffleCards();
+  }, []);
+
   return (
     <div className="App">
       <h1>Magic Match</h1>
@@ -80,6 +87,7 @@ function App() {
           />
         ))}
       </div>
+      <p>Turns: {turns}</p>
     </div>
   );
 }
